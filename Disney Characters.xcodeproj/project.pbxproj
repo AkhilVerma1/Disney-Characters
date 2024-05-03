@@ -190,8 +190,10 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				CLASSPREFIX = DC;
 				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1530;
+				ORGANIZATIONNAME = "OCloud Labs";
 				TargetAttributes = {
 					46A9DDCE2BE5500900FC66EB = {
 						CreatedOnToolsVersion = 15.3;
