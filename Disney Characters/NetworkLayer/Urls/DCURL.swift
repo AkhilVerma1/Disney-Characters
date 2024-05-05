@@ -11,23 +11,22 @@ import Foundation
 class DCURL {
     static let shared = DCURL()
     private let security = "https://"
-    private var infoDict: [String: Any] = Bundle.main.infoDictionary ?? [:]
+    private var infoDict: [String: Any]? = Bundle.main.infoDictionary
 
     private init() {
         // private init
     }
 
-    func getBaseURL() -> URL {
-        let url = "\(security)\(getServerURL())"
-        return URL(string: url) ?? URL(fileURLWithPath: "")
+    func getBaseURL() -> URL? {
+        let url = "\(security)\(getServerURL() ?? String())"
+        return URL(string: url)
     }
 }
 
 private extension DCURL {
-    func getServerURL() -> String {
-        guard let baseURL = infoDict[DCPlistKey.serverURL.rawValue] as? String else { return "" }
-        let cleanURL = baseURL.replacingOccurrences(of: "\"", with: "")
-        return cleanURL
+    func getServerURL() -> String? {
+        let baseURL = infoDict?[DCPlistKey.serverURL.rawValue] as? String
+        return baseURL?.replacingOccurrences(of: "\"", with: "")
     }
 }
 

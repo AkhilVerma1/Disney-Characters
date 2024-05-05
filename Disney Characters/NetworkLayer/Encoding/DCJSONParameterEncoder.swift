@@ -16,7 +16,11 @@ public struct DCJSONParameterEncoder: DCParameterEncoder {
             return
         }
         do {
-            let jsonAsData = try JSONSerialization.data(withJSONObject: parameters, options: .withoutEscapingSlashes)
+            let jsonAsData = try JSONSerialization.data(
+                withJSONObject: parameters,
+                options: .withoutEscapingSlashes
+            )
+            
             urlRequest.httpBody = jsonAsData
             if urlRequest.value(forHTTPHeaderField: DCNetworkConstants.contentType) == nil {
                 urlRequest.setValue(DCNetworkConstants.applicationJson,
