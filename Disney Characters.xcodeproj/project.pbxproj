@@ -7,10 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4664DCE82BE5FA99006EA71B /* DCDashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DCE72BE5FA99006EA71B /* DCDashboardViewModel.swift */; };
+		4664DCEA2BE5FAB4006EA71B /* DCDashboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DCE92BE5FAB4006EA71B /* DCDashboardTests.swift */; };
+		4664DCED2BE60DBE006EA71B /* DCCharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DCEC2BE60DBE006EA71B /* DCCharacterModel.swift */; };
+		4664DD0C2BE765D1006EA71B /* DCJSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DCEE2BE765D1006EA71B /* DCJSONParameterEncoder.swift */; };
+		4664DD0D2BE765D1006EA71B /* DCParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DCEF2BE765D1006EA71B /* DCParameterEncoding.swift */; };
+		4664DD0E2BE765D1006EA71B /* DCURLParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DCF02BE765D1006EA71B /* DCURLParameterEncoder.swift */; };
+		4664DD0F2BE765D1006EA71B /* DCAPIFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DCF22BE765D1006EA71B /* DCAPIFetcher.swift */; };
+		4664DD102BE765D1006EA71B /* DCAPIMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DCF32BE765D1006EA71B /* DCAPIMode.swift */; };
+		4664DD112BE765D1006EA71B /* DCFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DCF42BE765D1006EA71B /* DCFetcher.swift */; };
+		4664DD122BE765D1006EA71B /* DCNetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DCF62BE765D1006EA71B /* DCNetworkConstants.swift */; };
+		4664DD132BE765D1006EA71B /* DCNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DCF72BE765D1006EA71B /* DCNetworkError.swift */; };
+		4664DD142BE765D1006EA71B /* DCNetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DCF82BE765D1006EA71B /* DCNetworkResponse.swift */; };
+		4664DD152BE765D1006EA71B /* DCResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DCF92BE765D1006EA71B /* DCResult.swift */; };
+		4664DD162BE765D1006EA71B /* DCNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DCFB2BE765D1006EA71B /* DCNetworkManager.swift */; };
+		4664DD172BE765D1006EA71B /* DCOfflineManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DCFC2BE765D1006EA71B /* DCOfflineManager.swift */; };
+		4664DD182BE765D1006EA71B /* DCAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DCFE2BE765D1006EA71B /* DCAPIResponse.swift */; };
+		4664DD192BE765D1006EA71B /* DCHTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DD002BE765D1006EA71B /* DCHTTPMethod.swift */; };
+		4664DD1A2BE765D1006EA71B /* DCHTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DD012BE765D1006EA71B /* DCHTTPTask.swift */; };
+		4664DD1B2BE765D1006EA71B /* DCNetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DD022BE765D1006EA71B /* DCNetworkLogger.swift */; };
+		4664DD1C2BE765D1006EA71B /* DCRequestExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DD032BE765D1006EA71B /* DCRequestExecutor.swift */; };
+		4664DD1D2BE765D1006EA71B /* DCRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DD042BE765D1006EA71B /* DCRequestType.swift */; };
+		4664DD1E2BE765D1006EA71B /* DCRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DD052BE765D1006EA71B /* DCRouter.swift */; };
+		4664DD1F2BE765D1006EA71B /* DCRequestConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DD072BE765D1006EA71B /* DCRequestConfiguration.swift */; };
+		4664DD202BE765D1006EA71B /* DCRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DD082BE765D1006EA71B /* DCRequests.swift */; };
+		4664DD212BE765D1006EA71B /* DCURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DD092BE765D1006EA71B /* DCURL.swift */; };
+		4664DD232BE76807006EA71B /* DCNetworkLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DD222BE76807006EA71B /* DCNetworkLayerTests.swift */; };
 		46A9DDD32BE5500900FC66EB /* Disney_CharactersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9DDD22BE5500900FC66EB /* Disney_CharactersApp.swift */; };
 		46A9DDD72BE5500A00FC66EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46A9DDD62BE5500A00FC66EB /* Assets.xcassets */; };
 		46A9DDDA2BE5500A00FC66EB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46A9DDD92BE5500A00FC66EB /* Preview Assets.xcassets */; };
-		46A9DDE42BE5500A00FC66EB /* Disney_CharactersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9DDE32BE5500A00FC66EB /* Disney_CharactersTests.swift */; };
 		46A9DDEE2BE5500A00FC66EB /* Disney_CharactersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9DDED2BE5500A00FC66EB /* Disney_CharactersUITests.swift */; };
 		46A9DDF02BE5500A00FC66EB /* Disney_CharactersUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9DDEF2BE5500A00FC66EB /* Disney_CharactersUITestsLaunchTests.swift */; };
 		46A9DDFF2BE5520B00FC66EB /* DCDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9DDFE2BE5520B00FC66EB /* DCDashboardView.swift */; };
@@ -34,12 +59,37 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4664DCE72BE5FA99006EA71B /* DCDashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCDashboardViewModel.swift; sourceTree = "<group>"; };
+		4664DCE92BE5FAB4006EA71B /* DCDashboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCDashboardTests.swift; sourceTree = "<group>"; };
+		4664DCEC2BE60DBE006EA71B /* DCCharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCCharacterModel.swift; sourceTree = "<group>"; };
+		4664DCEE2BE765D1006EA71B /* DCJSONParameterEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCJSONParameterEncoder.swift; sourceTree = "<group>"; };
+		4664DCEF2BE765D1006EA71B /* DCParameterEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCParameterEncoding.swift; sourceTree = "<group>"; };
+		4664DCF02BE765D1006EA71B /* DCURLParameterEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCURLParameterEncoder.swift; sourceTree = "<group>"; };
+		4664DCF22BE765D1006EA71B /* DCAPIFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCAPIFetcher.swift; sourceTree = "<group>"; };
+		4664DCF32BE765D1006EA71B /* DCAPIMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCAPIMode.swift; sourceTree = "<group>"; };
+		4664DCF42BE765D1006EA71B /* DCFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCFetcher.swift; sourceTree = "<group>"; };
+		4664DCF62BE765D1006EA71B /* DCNetworkConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCNetworkConstants.swift; sourceTree = "<group>"; };
+		4664DCF72BE765D1006EA71B /* DCNetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCNetworkError.swift; sourceTree = "<group>"; };
+		4664DCF82BE765D1006EA71B /* DCNetworkResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCNetworkResponse.swift; sourceTree = "<group>"; };
+		4664DCF92BE765D1006EA71B /* DCResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCResult.swift; sourceTree = "<group>"; };
+		4664DCFB2BE765D1006EA71B /* DCNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCNetworkManager.swift; sourceTree = "<group>"; };
+		4664DCFC2BE765D1006EA71B /* DCOfflineManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCOfflineManager.swift; sourceTree = "<group>"; };
+		4664DCFE2BE765D1006EA71B /* DCAPIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCAPIResponse.swift; sourceTree = "<group>"; };
+		4664DD002BE765D1006EA71B /* DCHTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCHTTPMethod.swift; sourceTree = "<group>"; };
+		4664DD012BE765D1006EA71B /* DCHTTPTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCHTTPTask.swift; sourceTree = "<group>"; };
+		4664DD022BE765D1006EA71B /* DCNetworkLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCNetworkLogger.swift; sourceTree = "<group>"; };
+		4664DD032BE765D1006EA71B /* DCRequestExecutor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCRequestExecutor.swift; sourceTree = "<group>"; };
+		4664DD042BE765D1006EA71B /* DCRequestType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCRequestType.swift; sourceTree = "<group>"; };
+		4664DD052BE765D1006EA71B /* DCRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCRouter.swift; sourceTree = "<group>"; };
+		4664DD072BE765D1006EA71B /* DCRequestConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCRequestConfiguration.swift; sourceTree = "<group>"; };
+		4664DD082BE765D1006EA71B /* DCRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCRequests.swift; sourceTree = "<group>"; };
+		4664DD092BE765D1006EA71B /* DCURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCURL.swift; sourceTree = "<group>"; };
+		4664DD222BE76807006EA71B /* DCNetworkLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCNetworkLayerTests.swift; sourceTree = "<group>"; };
 		46A9DDCF2BE5500900FC66EB /* Disney Characters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Disney Characters.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		46A9DDD22BE5500900FC66EB /* Disney_CharactersApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disney_CharactersApp.swift; sourceTree = "<group>"; };
 		46A9DDD62BE5500A00FC66EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		46A9DDD92BE5500A00FC66EB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		46A9DDDF2BE5500A00FC66EB /* Disney CharactersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Disney CharactersTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		46A9DDE32BE5500A00FC66EB /* Disney_CharactersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disney_CharactersTests.swift; sourceTree = "<group>"; };
 		46A9DDE92BE5500A00FC66EB /* Disney CharactersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Disney CharactersUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		46A9DDED2BE5500A00FC66EB /* Disney_CharactersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disney_CharactersUITests.swift; sourceTree = "<group>"; };
 		46A9DDEF2BE5500A00FC66EB /* Disney_CharactersUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disney_CharactersUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -79,6 +129,107 @@
 			path = SystemFiles;
 			sourceTree = "<group>";
 		};
+		4664DCE62BE5FA90006EA71B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4664DCE72BE5FA99006EA71B /* DCDashboardViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4664DCEB2BE60DB7006EA71B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4664DCEC2BE60DBE006EA71B /* DCCharacterModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4664DCF12BE765D1006EA71B /* Encoding */ = {
+			isa = PBXGroup;
+			children = (
+				4664DCEE2BE765D1006EA71B /* DCJSONParameterEncoder.swift */,
+				4664DCEF2BE765D1006EA71B /* DCParameterEncoding.swift */,
+				4664DCF02BE765D1006EA71B /* DCURLParameterEncoder.swift */,
+			);
+			path = Encoding;
+			sourceTree = "<group>";
+		};
+		4664DCF52BE765D1006EA71B /* Fetchers */ = {
+			isa = PBXGroup;
+			children = (
+				4664DCF22BE765D1006EA71B /* DCAPIFetcher.swift */,
+				4664DCF32BE765D1006EA71B /* DCAPIMode.swift */,
+				4664DCF42BE765D1006EA71B /* DCFetcher.swift */,
+			);
+			path = Fetchers;
+			sourceTree = "<group>";
+		};
+		4664DCFA2BE765D1006EA71B /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				4664DCF62BE765D1006EA71B /* DCNetworkConstants.swift */,
+				4664DCF72BE765D1006EA71B /* DCNetworkError.swift */,
+				4664DCF82BE765D1006EA71B /* DCNetworkResponse.swift */,
+				4664DCF92BE765D1006EA71B /* DCResult.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		4664DCFD2BE765D1006EA71B /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				4664DCFB2BE765D1006EA71B /* DCNetworkManager.swift */,
+				4664DCFC2BE765D1006EA71B /* DCOfflineManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		4664DCFF2BE765D1006EA71B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4664DCFE2BE765D1006EA71B /* DCAPIResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4664DD062BE765D1006EA71B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				4664DD002BE765D1006EA71B /* DCHTTPMethod.swift */,
+				4664DD012BE765D1006EA71B /* DCHTTPTask.swift */,
+				4664DD022BE765D1006EA71B /* DCNetworkLogger.swift */,
+				4664DD032BE765D1006EA71B /* DCRequestExecutor.swift */,
+				4664DD042BE765D1006EA71B /* DCRequestType.swift */,
+				4664DD052BE765D1006EA71B /* DCRouter.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		4664DD0A2BE765D1006EA71B /* Urls */ = {
+			isa = PBXGroup;
+			children = (
+				4664DD072BE765D1006EA71B /* DCRequestConfiguration.swift */,
+				4664DD082BE765D1006EA71B /* DCRequests.swift */,
+				4664DD092BE765D1006EA71B /* DCURL.swift */,
+			);
+			path = Urls;
+			sourceTree = "<group>";
+		};
+		4664DD0B2BE765D1006EA71B /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				4664DCF12BE765D1006EA71B /* Encoding */,
+				4664DCF52BE765D1006EA71B /* Fetchers */,
+				4664DCFA2BE765D1006EA71B /* Helper */,
+				4664DCFD2BE765D1006EA71B /* Managers */,
+				4664DCFF2BE765D1006EA71B /* Models */,
+				4664DD062BE765D1006EA71B /* Service */,
+				4664DD0A2BE765D1006EA71B /* Urls */,
+			);
+			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
 		46A9DDC62BE5500900FC66EB = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +255,7 @@
 			children = (
 				46A9DDFC2BE551FC00FC66EB /* Dashboard */,
 				46A9DDD62BE5500A00FC66EB /* Assets.xcassets */,
+				4664DD0B2BE765D1006EA71B /* NetworkLayer */,
 				4664DCE52BE5F721006EA71B /* SystemFiles */,
 				46A9DDD82BE5500A00FC66EB /* Preview Content */,
 			);
@@ -121,7 +273,8 @@
 		46A9DDE22BE5500A00FC66EB /* Disney CharactersTests */ = {
 			isa = PBXGroup;
 			children = (
-				46A9DDE32BE5500A00FC66EB /* Disney_CharactersTests.swift */,
+				4664DCE92BE5FAB4006EA71B /* DCDashboardTests.swift */,
+				4664DD222BE76807006EA71B /* DCNetworkLayerTests.swift */,
 			);
 			path = "Disney CharactersTests";
 			sourceTree = "<group>";
@@ -138,6 +291,8 @@
 		46A9DDFC2BE551FC00FC66EB /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				4664DCEB2BE60DB7006EA71B /* Model */,
+				4664DCE62BE5FA90006EA71B /* ViewModel */,
 				46A9DDFD2BE5520000FC66EB /* View */,
 			);
 			path = Dashboard;
@@ -283,8 +438,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4664DD0C2BE765D1006EA71B /* DCJSONParameterEncoder.swift in Sources */,
+				4664DD1B2BE765D1006EA71B /* DCNetworkLogger.swift in Sources */,
+				4664DD0D2BE765D1006EA71B /* DCParameterEncoding.swift in Sources */,
+				4664DD132BE765D1006EA71B /* DCNetworkError.swift in Sources */,
+				4664DD122BE765D1006EA71B /* DCNetworkConstants.swift in Sources */,
 				46A9DDFF2BE5520B00FC66EB /* DCDashboardView.swift in Sources */,
+				4664DD1C2BE765D1006EA71B /* DCRequestExecutor.swift in Sources */,
+				4664DD152BE765D1006EA71B /* DCResult.swift in Sources */,
+				4664DD0F2BE765D1006EA71B /* DCAPIFetcher.swift in Sources */,
+				4664DD192BE765D1006EA71B /* DCHTTPMethod.swift in Sources */,
+				4664DD142BE765D1006EA71B /* DCNetworkResponse.swift in Sources */,
+				4664DCE82BE5FA99006EA71B /* DCDashboardViewModel.swift in Sources */,
+				4664DD182BE765D1006EA71B /* DCAPIResponse.swift in Sources */,
+				4664DD102BE765D1006EA71B /* DCAPIMode.swift in Sources */,
+				4664DD1D2BE765D1006EA71B /* DCRequestType.swift in Sources */,
+				4664DD172BE765D1006EA71B /* DCOfflineManager.swift in Sources */,
+				4664DCED2BE60DBE006EA71B /* DCCharacterModel.swift in Sources */,
+				4664DD202BE765D1006EA71B /* DCRequests.swift in Sources */,
+				4664DD0E2BE765D1006EA71B /* DCURLParameterEncoder.swift in Sources */,
+				4664DD1E2BE765D1006EA71B /* DCRouter.swift in Sources */,
+				4664DD1F2BE765D1006EA71B /* DCRequestConfiguration.swift in Sources */,
+				4664DD112BE765D1006EA71B /* DCFetcher.swift in Sources */,
+				4664DD212BE765D1006EA71B /* DCURL.swift in Sources */,
+				4664DD162BE765D1006EA71B /* DCNetworkManager.swift in Sources */,
 				46A9DDD32BE5500900FC66EB /* Disney_CharactersApp.swift in Sources */,
+				4664DD1A2BE765D1006EA71B /* DCHTTPTask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +471,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46A9DDE42BE5500A00FC66EB /* Disney_CharactersTests.swift in Sources */,
+				4664DCEA2BE5FAB4006EA71B /* DCDashboardTests.swift in Sources */,
+				4664DD232BE76807006EA71B /* DCNetworkLayerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
