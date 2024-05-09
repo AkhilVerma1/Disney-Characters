@@ -14,22 +14,17 @@ struct DCDashboardView: View {
     var body: some View {
         NavigationStack {
             List {
-                HStack(spacing: 20) {
-                    Spacer()
-                    circleView
-                    circleView
-                    Spacer()
-                }
-                .listRowSeparator(.hidden)
-
-                VStack(spacing: 20) {
-                    Spacer()
-                    circleView
-                    circleView
-                    Spacer()
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        ForEach(0..<100) { _ in
+                            circleView
+                                .padding(4)
+                        }
+                    }
                 }
                 .listRowSeparator(.hidden)
             }
+            .listRowSeparator(.hidden)
             .listStyle(.plain)
             .navigationTitle("Dashboard")
         }
@@ -38,7 +33,7 @@ struct DCDashboardView: View {
     private var circleView: some View {
         ZStack {
             Circle()
-                .frame(height: 100)
+                .frame(height: 70)
                 .foregroundStyle(LinearGradient(
                     colors: [.pink, .red.opacity(0.5), .brown],
                     startPoint: .top,
@@ -48,11 +43,11 @@ struct DCDashboardView: View {
             
             Circle()
                 .foregroundStyle(.white)
-                .frame(height: 70)
+                .frame(height: 45)
                 .shadow(radius: 2)
             
             Circle()
-                .frame(height: 25)
+                .frame(height: 15)
         }
     }
 }
