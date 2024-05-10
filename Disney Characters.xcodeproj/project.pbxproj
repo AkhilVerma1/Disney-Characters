@@ -22,7 +22,6 @@
 		4664DD152BE765D1006EA71B /* DCResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DCF92BE765D1006EA71B /* DCResult.swift */; };
 		4664DD162BE765D1006EA71B /* DCNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DCFB2BE765D1006EA71B /* DCNetworkManager.swift */; };
 		4664DD172BE765D1006EA71B /* DCOfflineManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DCFC2BE765D1006EA71B /* DCOfflineManager.swift */; };
-		4664DD182BE765D1006EA71B /* DCAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DCFE2BE765D1006EA71B /* DCAPIResponse.swift */; };
 		4664DD192BE765D1006EA71B /* DCHTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DD002BE765D1006EA71B /* DCHTTPMethod.swift */; };
 		4664DD1A2BE765D1006EA71B /* DCHTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DD012BE765D1006EA71B /* DCHTTPTask.swift */; };
 		4664DD1B2BE765D1006EA71B /* DCNetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DD022BE765D1006EA71B /* DCNetworkLogger.swift */; };
@@ -80,7 +79,6 @@
 		4664DCF92BE765D1006EA71B /* DCResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCResult.swift; sourceTree = "<group>"; };
 		4664DCFB2BE765D1006EA71B /* DCNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCNetworkManager.swift; sourceTree = "<group>"; };
 		4664DCFC2BE765D1006EA71B /* DCOfflineManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCOfflineManager.swift; sourceTree = "<group>"; };
-		4664DCFE2BE765D1006EA71B /* DCAPIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCAPIResponse.swift; sourceTree = "<group>"; };
 		4664DD002BE765D1006EA71B /* DCHTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCHTTPMethod.swift; sourceTree = "<group>"; };
 		4664DD012BE765D1006EA71B /* DCHTTPTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCHTTPTask.swift; sourceTree = "<group>"; };
 		4664DD022BE765D1006EA71B /* DCNetworkLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCNetworkLogger.swift; sourceTree = "<group>"; };
@@ -200,14 +198,6 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		4664DCFF2BE765D1006EA71B /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				4664DCFE2BE765D1006EA71B /* DCAPIResponse.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		4664DD062BE765D1006EA71B /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,7 +229,6 @@
 				4664DCF52BE765D1006EA71B /* Fetchers */,
 				4664DCFA2BE765D1006EA71B /* Helper */,
 				4664DCFD2BE765D1006EA71B /* Managers */,
-				4664DCFF2BE765D1006EA71B /* Models */,
 				4664DD062BE765D1006EA71B /* Service */,
 				4664DD0A2BE765D1006EA71B /* Urls */,
 			);
@@ -319,12 +308,12 @@
 			isa = PBXGroup;
 			children = (
 				469D18E22BEDFF82002A98D2 /* Utility */,
-				469D18DE2BEDF930002A98D2 /* Disney-Characters-Info.plist */,
 				46A9DDFC2BE551FC00FC66EB /* Dashboard */,
-				46A9DDD62BE5500A00FC66EB /* Assets.xcassets */,
 				4664DD0B2BE765D1006EA71B /* NetworkLayer */,
 				4664DCE52BE5F721006EA71B /* SystemFiles */,
 				46A9DDD82BE5500A00FC66EB /* Preview Content */,
+				46A9DDD62BE5500A00FC66EB /* Assets.xcassets */,
+				469D18DE2BEDF930002A98D2 /* Disney-Characters-Info.plist */,
 			);
 			path = "Disney Characters";
 			sourceTree = "<group>";
@@ -521,7 +510,6 @@
 				4664DD192BE765D1006EA71B /* DCHTTPMethod.swift in Sources */,
 				4664DD142BE765D1006EA71B /* DCNetworkResponse.swift in Sources */,
 				4664DCE82BE5FA99006EA71B /* DCDashboardViewModel.swift in Sources */,
-				4664DD182BE765D1006EA71B /* DCAPIResponse.swift in Sources */,
 				469D18EB2BEE07A2002A98D2 /* DCCharacterDisplayModel.swift in Sources */,
 				469D18DD2BEDF2BE002A98D2 /* DCURLPath.swift in Sources */,
 				4664DD102BE765D1006EA71B /* DCAPIMode.swift in Sources */,
