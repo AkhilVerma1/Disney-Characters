@@ -12,7 +12,7 @@ class DCAPIFetcher: DCFetcher {
     var api: DCRequestType?
     var fetchMode: DCAPIMode = .online
 
-    func withAPI(_ api: DCRequestType) -> Self {
+    func withAPI(_ api: DCRequestType?) -> Self {
         self.api = api
         return self
     }
@@ -22,7 +22,7 @@ class DCAPIFetcher: DCFetcher {
         return self
     }
 
-    func fetch<T>(_ model: T.Type) async throws -> (responseModel: T?, error: String?) where T: DCAPIResponse {
+    func fetch<T>(_ model: T.Type) async throws -> (responseModel: T?, error: String?) where T: Codable {
         do {
             return try await DCNetworkManager.init().request(api)
         } catch {

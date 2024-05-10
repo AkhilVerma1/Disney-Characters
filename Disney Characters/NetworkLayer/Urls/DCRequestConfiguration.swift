@@ -13,7 +13,7 @@ class DCRequestConfiguration {
     private var configurations: [DCRequests: DCRequestType] = [:]
     
     private init() {
-        configurations[.github] = getGithubConfiguration()
+        configurations[.disneyCharacters] = getDisneyCharacterConfiguration()
     }
     
     func getConfiguration(_ request: DCRequests) -> DCRequestType? {
@@ -23,13 +23,11 @@ class DCRequestConfiguration {
 
 private extension DCRequestConfiguration {
     
-    func getGithubConfiguration() -> DCRequestType? {
+    func getDisneyCharacterConfiguration() -> DCRequestType? {
         guard let baseURL = DCURL.shared.getBaseURL() else { return nil }
-        let path = "users"
-        
         return DCRequestType(
             baseURL: baseURL,
-            path: path,
+            path: DCURLPath.character,
             httpMethod: .get,
             task: .request
         )

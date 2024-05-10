@@ -12,8 +12,8 @@ protocol DCFetcher {
     var api: DCRequestType? { get set }
     var fetchMode: DCAPIMode { get set }
 
-    func withAPI(_ api: DCRequestType) -> Self
+    func withAPI(_ api: DCRequestType?) -> Self
     func setFetchMode(_ mode: DCAPIMode) -> Self
 
-    func fetch<T: DCAPIResponse>(_ model: T.Type) async throws -> (responseModel: T?, error: String?)
+    func fetch<T: Codable>(_ model: T.Type) async throws -> (responseModel: T?, error: String?)
 }

@@ -33,6 +33,12 @@
 		4664DD202BE765D1006EA71B /* DCRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DD082BE765D1006EA71B /* DCRequests.swift */; };
 		4664DD212BE765D1006EA71B /* DCURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DD092BE765D1006EA71B /* DCURL.swift */; };
 		4664DD232BE76807006EA71B /* DCNetworkLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DD222BE76807006EA71B /* DCNetworkLayerTests.swift */; };
+		469D18DD2BEDF2BE002A98D2 /* DCURLPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469D18DC2BEDF2BE002A98D2 /* DCURLPath.swift */; };
+		469D18E12BEDFDA5002A98D2 /* DCCharacterAPIDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469D18E02BEDFDA5002A98D2 /* DCCharacterAPIDataModel.swift */; };
+		469D18E52BEDFF9B002A98D2 /* DCFetcherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469D18E42BEDFF9B002A98D2 /* DCFetcherView.swift */; };
+		469D18E82BEE01F4002A98D2 /* DCCharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469D18E72BEE01F4002A98D2 /* DCCharacterView.swift */; };
+		469D18EB2BEE07A2002A98D2 /* DCCharacterDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469D18EA2BEE07A2002A98D2 /* DCCharacterDisplayModel.swift */; };
+		469D18EE2BEE172E002A98D2 /* CachedAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469D18ED2BEE172E002A98D2 /* CachedAsyncImage.swift */; };
 		46A9DDD32BE5500900FC66EB /* Disney_CharactersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9DDD22BE5500900FC66EB /* Disney_CharactersApp.swift */; };
 		46A9DDD72BE5500A00FC66EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46A9DDD62BE5500A00FC66EB /* Assets.xcassets */; };
 		46A9DDDA2BE5500A00FC66EB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46A9DDD92BE5500A00FC66EB /* Preview Assets.xcassets */; };
@@ -85,6 +91,13 @@
 		4664DD082BE765D1006EA71B /* DCRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCRequests.swift; sourceTree = "<group>"; };
 		4664DD092BE765D1006EA71B /* DCURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCURL.swift; sourceTree = "<group>"; };
 		4664DD222BE76807006EA71B /* DCNetworkLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCNetworkLayerTests.swift; sourceTree = "<group>"; };
+		469D18DC2BEDF2BE002A98D2 /* DCURLPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCURLPath.swift; sourceTree = "<group>"; };
+		469D18DE2BEDF930002A98D2 /* Disney-Characters-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Disney-Characters-Info.plist"; sourceTree = SOURCE_ROOT; };
+		469D18E02BEDFDA5002A98D2 /* DCCharacterAPIDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCCharacterAPIDataModel.swift; sourceTree = "<group>"; };
+		469D18E42BEDFF9B002A98D2 /* DCFetcherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCFetcherView.swift; sourceTree = "<group>"; };
+		469D18E72BEE01F4002A98D2 /* DCCharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCCharacterView.swift; sourceTree = "<group>"; };
+		469D18EA2BEE07A2002A98D2 /* DCCharacterDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCCharacterDisplayModel.swift; sourceTree = "<group>"; };
+		469D18ED2BEE172E002A98D2 /* CachedAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImage.swift; sourceTree = "<group>"; };
 		46A9DDCF2BE5500900FC66EB /* Disney Characters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Disney Characters.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		46A9DDD22BE5500900FC66EB /* Disney_CharactersApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disney_CharactersApp.swift; sourceTree = "<group>"; };
 		46A9DDD62BE5500A00FC66EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -140,6 +153,8 @@
 		4664DCEB2BE60DB7006EA71B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				469D18E92BEE0792002A98D2 /* DisplayModel */,
+				469D18DF2BEDFD9D002A98D2 /* APIModel */,
 				4664DCEC2BE60DBE006EA71B /* DCCharacterModel.swift */,
 			);
 			path = Model;
@@ -212,6 +227,7 @@
 				4664DD072BE765D1006EA71B /* DCRequestConfiguration.swift */,
 				4664DD082BE765D1006EA71B /* DCRequests.swift */,
 				4664DD092BE765D1006EA71B /* DCURL.swift */,
+				469D18DC2BEDF2BE002A98D2 /* DCURLPath.swift */,
 			);
 			path = Urls;
 			sourceTree = "<group>";
@@ -228,6 +244,55 @@
 				4664DD0A2BE765D1006EA71B /* Urls */,
 			);
 			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		469D18DF2BEDFD9D002A98D2 /* APIModel */ = {
+			isa = PBXGroup;
+			children = (
+				469D18E02BEDFDA5002A98D2 /* DCCharacterAPIDataModel.swift */,
+			);
+			path = APIModel;
+			sourceTree = "<group>";
+		};
+		469D18E22BEDFF82002A98D2 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				469D18EC2BEE1723002A98D2 /* Service */,
+				469D18E32BEDFF8C002A98D2 /* Views */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		469D18E32BEDFF8C002A98D2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				469D18E42BEDFF9B002A98D2 /* DCFetcherView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		469D18E62BEE01EB002A98D2 /* CharacterView */ = {
+			isa = PBXGroup;
+			children = (
+				469D18E72BEE01F4002A98D2 /* DCCharacterView.swift */,
+			);
+			path = CharacterView;
+			sourceTree = "<group>";
+		};
+		469D18E92BEE0792002A98D2 /* DisplayModel */ = {
+			isa = PBXGroup;
+			children = (
+				469D18EA2BEE07A2002A98D2 /* DCCharacterDisplayModel.swift */,
+			);
+			path = DisplayModel;
+			sourceTree = "<group>";
+		};
+		469D18EC2BEE1723002A98D2 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				469D18ED2BEE172E002A98D2 /* CachedAsyncImage.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		46A9DDC62BE5500900FC66EB = {
@@ -253,6 +318,8 @@
 		46A9DDD12BE5500900FC66EB /* Disney Characters */ = {
 			isa = PBXGroup;
 			children = (
+				469D18E22BEDFF82002A98D2 /* Utility */,
+				469D18DE2BEDF930002A98D2 /* Disney-Characters-Info.plist */,
 				46A9DDFC2BE551FC00FC66EB /* Dashboard */,
 				46A9DDD62BE5500A00FC66EB /* Assets.xcassets */,
 				4664DD0B2BE765D1006EA71B /* NetworkLayer */,
@@ -301,6 +368,7 @@
 		46A9DDFD2BE5520000FC66EB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				469D18E62BEE01EB002A98D2 /* CharacterView */,
 				46A9DDFE2BE5520B00FC66EB /* DCDashboardView.swift */,
 			);
 			path = View;
@@ -439,18 +507,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				4664DD0C2BE765D1006EA71B /* DCJSONParameterEncoder.swift in Sources */,
+				469D18E12BEDFDA5002A98D2 /* DCCharacterAPIDataModel.swift in Sources */,
 				4664DD1B2BE765D1006EA71B /* DCNetworkLogger.swift in Sources */,
 				4664DD0D2BE765D1006EA71B /* DCParameterEncoding.swift in Sources */,
 				4664DD132BE765D1006EA71B /* DCNetworkError.swift in Sources */,
 				4664DD122BE765D1006EA71B /* DCNetworkConstants.swift in Sources */,
 				46A9DDFF2BE5520B00FC66EB /* DCDashboardView.swift in Sources */,
 				4664DD1C2BE765D1006EA71B /* DCRequestExecutor.swift in Sources */,
+				469D18E52BEDFF9B002A98D2 /* DCFetcherView.swift in Sources */,
 				4664DD152BE765D1006EA71B /* DCResult.swift in Sources */,
+				469D18EE2BEE172E002A98D2 /* CachedAsyncImage.swift in Sources */,
 				4664DD0F2BE765D1006EA71B /* DCAPIFetcher.swift in Sources */,
 				4664DD192BE765D1006EA71B /* DCHTTPMethod.swift in Sources */,
 				4664DD142BE765D1006EA71B /* DCNetworkResponse.swift in Sources */,
 				4664DCE82BE5FA99006EA71B /* DCDashboardViewModel.swift in Sources */,
 				4664DD182BE765D1006EA71B /* DCAPIResponse.swift in Sources */,
+				469D18EB2BEE07A2002A98D2 /* DCCharacterDisplayModel.swift in Sources */,
+				469D18DD2BEDF2BE002A98D2 /* DCURLPath.swift in Sources */,
 				4664DD102BE765D1006EA71B /* DCAPIMode.swift in Sources */,
 				4664DD1D2BE765D1006EA71B /* DCRequestType.swift in Sources */,
 				4664DD172BE765D1006EA71B /* DCOfflineManager.swift in Sources */,
@@ -460,6 +533,7 @@
 				4664DD1E2BE765D1006EA71B /* DCRouter.swift in Sources */,
 				4664DD1F2BE765D1006EA71B /* DCRequestConfiguration.swift in Sources */,
 				4664DD112BE765D1006EA71B /* DCFetcher.swift in Sources */,
+				469D18E82BEE01F4002A98D2 /* DCCharacterView.swift in Sources */,
 				4664DD212BE765D1006EA71B /* DCURL.swift in Sources */,
 				4664DD162BE765D1006EA71B /* DCNetworkManager.swift in Sources */,
 				46A9DDD32BE5500900FC66EB /* Disney_CharactersApp.swift in Sources */,
@@ -625,12 +699,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BASE_URL = api.disneyapi.dev;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Disney Characters/Preview Content\"";
 				DEVELOPMENT_TEAM = 4UZK2DCNHA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Disney-Characters-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -654,12 +730,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BASE_URL = api.disneyapi.dev;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Disney Characters/Preview Content\"";
 				DEVELOPMENT_TEAM = 4UZK2DCNHA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Disney-Characters-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

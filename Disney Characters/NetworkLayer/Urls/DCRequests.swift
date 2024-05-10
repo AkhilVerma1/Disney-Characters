@@ -9,5 +9,5 @@
 import Foundation
 
 enum DCRequests {
-    case github
+    case disneyCharacters
 }

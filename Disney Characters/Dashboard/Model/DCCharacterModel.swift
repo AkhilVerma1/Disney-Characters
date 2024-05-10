@@ -8,10 +8,18 @@
 
 import Foundation
 
-class DCCharacterModel {
-    let name: String
+struct DCCharacterModel: Codable {
+    var data: [DCCharacterAPIDataModel] = []
     
-    init(name: String) {
-        self.name = name
+    @MainActor
+    static func getCharacters() async -> DCCharacterModel? {
+        let api = DCRequestConfiguration.shared.getConfiguration(.disneyCharacters)
+        
+        let result = try? await DCAPIFetcher
+            .init()
+            .withAPI(api)
+            .fetch(DCCharacterModel.self)
+
+        return result?.responseModel
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 
 class DCNetworkManager {
 
-    func request<T: DCAPIResponse>(_ endPoint: DCRequestType?) async throws -> (responseModel: T?, error: String?) {
+    func request<T: Codable>(_ endPoint: DCRequestType?) async throws -> (responseModel: T?, error: String?) {
         guard let endPoint = endPoint else { return (nil, "Endpoint is invalid") }
         do {
             let (data, response) = try await DCRouter.init().request(endPoint)
@@ -21,8 +21,8 @@ class DCNetworkManager {
 
 private extension DCNetworkManager {
 
-    func getAPIModel<T: DCAPIResponse>(_ model: T.Type, responseData: Data) -> T {
-        T.init(try? JSONSerialization.jsonObject(with: responseData))
+    func getAPIModel<T: Codable>(_ model: T.Type, responseData: Data) -> T? {
+        try? JSONDecoder.init().decode(T.self, from: responseData)
     }
 
     func getAPIError(_ data: Data?) -> String? {
@@ -33,7 +33,7 @@ private extension DCNetworkManager {
         return errorMessage as? String
     }
 
-    func handleAPIResponse<T: DCAPIResponse>(_ model: T.Type, data: Data?, response: URLResponse?) -> (T?, String?) {
+    func handleAPIResponse<T: Codable>(_ model: T.Type, data: Data?, response: URLResponse?) -> (T?, String?) {
         guard let response = response as? HTTPURLResponse
         else { return (nil, DCNetworkConstants.checkNetworkConnection) }
 
