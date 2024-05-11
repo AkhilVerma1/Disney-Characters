@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		465ADCA32BEF806E00D621EA /* DCCharacterImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465ADCA22BEF806E00D621EA /* DCCharacterImageView.swift */; };
 		4664DCE82BE5FA99006EA71B /* DCDashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DCE72BE5FA99006EA71B /* DCDashboardViewModel.swift */; };
 		4664DCEA2BE5FAB4006EA71B /* DCDashboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DCE92BE5FAB4006EA71B /* DCDashboardTests.swift */; };
 		4664DCED2BE60DBE006EA71B /* DCCharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4664DCEC2BE60DBE006EA71B /* DCCharacterModel.swift */; };
@@ -65,6 +66,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		465ADCA22BEF806E00D621EA /* DCCharacterImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCCharacterImageView.swift; sourceTree = "<group>"; };
 		4664DCE72BE5FA99006EA71B /* DCDashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCDashboardViewModel.swift; sourceTree = "<group>"; };
 		4664DCE92BE5FAB4006EA71B /* DCDashboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCDashboardTests.swift; sourceTree = "<group>"; };
 		4664DCEC2BE60DBE006EA71B /* DCCharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCCharacterModel.swift; sourceTree = "<group>"; };
@@ -134,6 +136,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		465ADCA12BEF806700D621EA /* ImageView */ = {
+			isa = PBXGroup;
+			children = (
+				465ADCA22BEF806E00D621EA /* DCCharacterImageView.swift */,
+			);
+			path = ImageView;
+			sourceTree = "<group>";
+		};
 		4664DCE52BE5F721006EA71B /* SystemFiles */ = {
 			isa = PBXGroup;
 			children = (
@@ -376,6 +386,7 @@
 		46A9DDFD2BE5520000FC66EB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				465ADCA12BEF806700D621EA /* ImageView */,
 				469D18E62BEE01EB002A98D2 /* CharacterView */,
 				46A9DDFE2BE5520B00FC66EB /* DCDashboardView.swift */,
 			);
@@ -533,6 +544,7 @@
 				469D18EB2BEE07A2002A98D2 /* DCCharacterDisplayModel.swift in Sources */,
 				469D18DD2BEDF2BE002A98D2 /* DCURLPath.swift in Sources */,
 				4664DD102BE765D1006EA71B /* DCAPIMode.swift in Sources */,
+				465ADCA32BEF806E00D621EA /* DCCharacterImageView.swift in Sources */,
 				4664DD1D2BE765D1006EA71B /* DCRequestType.swift in Sources */,
 				4664DD172BE765D1006EA71B /* DCOfflineManager.swift in Sources */,
 				4664DCED2BE60DBE006EA71B /* DCCharacterModel.swift in Sources */,

@@ -23,6 +23,7 @@ struct DCDashboardView: View, Sendable {
 private extension DCDashboardView {
     
     func viewDidLoad() {
+        guard viewModel.charactersDisplayModels.isEmpty else { return }
         Task {
             await viewModel.setup()
         }
@@ -31,21 +32,17 @@ private extension DCDashboardView {
     var containerView: some View {
         VStack {
             if viewModel.isFetchingData {
-                fetcherView
+                DCFetcherView()
             } else {
                 contentView
             }
         }
     }
     
-    var fetcherView: some View {
-        DCFetcherView()
-    }
-    
     @ViewBuilder
     var contentView: some View {
         if viewModel.isError {
-            Text(viewModel.getNetworkError() ?? "Something went wrong")
+            Text(viewModel.getNetworkError())
         } else {
             dataView
         }
@@ -55,6 +52,10 @@ private extension DCDashboardView {
         VStack {
             if !viewModel.charactersDisplayModels.isEmpty {
                 List {
+                    let bookmarkedCharacters = viewModel.getBookmarkedCharacters()
+                    if !bookmarkedCharacters.isEmpty {
+                        bookmarkedCharactersView(bookmarkedCharacters)
+                    }
                     characterView(viewModel.charactersDisplayModels)
                 }
             } else {
@@ -65,17 +66,30 @@ private extension DCDashboardView {
     
     func characterView(_ characters: [DCCharacterDisplayModel]) -> some View {
         ForEach(characters) { character in
-            DCCharacterView(
-                character: character
-            )
-            .onTapGesture {
-                viewModel.didTapCharacter(character)
+            NavigationLink {
+                Text(character.name)
+            } label: {
+                DCCharacterView(
+                    character: character
+                ) {
+                    viewModel.didTapBookmarkCharacter(character)
+                }
             }
         }
     }
     
     var contentUnavaliable: some View {
         ContentUnavailableView.search
+    }
+    
+    func bookmarkedCharactersView(_ characters: [DCCharacterDisplayModel]) -> some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack {
+                ForEach(characters) { character in
+                    DCCharacterImageView(imagePath: character.imageUrl)
+                }
+            }
+        }
     }
 }
 

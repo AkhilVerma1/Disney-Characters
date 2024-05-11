@@ -32,15 +32,18 @@ class DCDashboardViewModel: ObservableObject {
         isFetchingData.toggle()
     }
     
-    func didTapCharacter(_ character: DCCharacterDisplayModel) {
+    func didTapBookmarkCharacter(_ character: DCCharacterDisplayModel) {
         guard let index = charactersDisplayModels.firstIndex(of: character) else { return }
         charactersDisplayModels[index] = character
         charactersDisplayModels[index].isBookmarked.toggle()
-        debugPrint(charactersDisplayModels[index].isBookmarked)
     }
     
-    func getNetworkError() -> String? {
-        networkError
+    func getBookmarkedCharacters() -> [DCCharacterDisplayModel] {
+        charactersDisplayModels.filter { $0.isBookmarked }
+    }
+    
+    func getNetworkError() -> String {
+        networkError ?? DCCustomError.SWR.rawValue
     }
 }
 
@@ -52,8 +55,15 @@ private extension DCDashboardViewModel {
             return DCCharacterDisplayModel(
                 name: name,
                 imageUrl: imageURL,
-                isBookmarked: false
+                isBookmarked: isCharacterBookmarked($0._id)
             )
         }
+    }
+    
+    func isCharacterBookmarked(_ id: Int?) -> Bool {
+            
+        // compare the ID with local storage id
+    
+        false
     }
 }
