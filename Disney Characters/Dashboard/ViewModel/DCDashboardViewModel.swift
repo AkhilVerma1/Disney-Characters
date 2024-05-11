@@ -10,6 +10,7 @@ import SwiftUI
 
 class DCDashboardViewModel: ObservableObject {
     @Published var isError = false
+    @Published var isSearchError = false
     @Published var isFetchingData = false
     @Published var charactersDisplayModels: [DCCharacterDisplayModel] = []
     
@@ -31,6 +32,13 @@ class DCDashboardViewModel: ObservableObject {
         }
         
         isFetchingData.toggle()
+    }
+    
+    @MainActor
+    func didSearchCharacters(_ searchText: String) {
+        let characters = getCharactersDisplayModel(characters?.data ?? [])
+        charactersDisplayModels = searchText.isEmpty ? characters :characters.filter { $0.name.contains(searchText) }
+        isSearchError = searchText.isEmpty ? false : charactersDisplayModels.isEmpty
     }
     
     func didTapBookmarkCharacter(_ character: DCCharacterDisplayModel) {
@@ -61,10 +69,5 @@ private extension DCDashboardViewModel {
         }
     }
     
-    func isCharacterBookmarked(_ id: Int?) -> Bool {
-            
-        // compare the ID with local storage id
-    
-        false
-    }
+    func isCharacterBookmarked(_ id: Int?) -> Bool { false }
 }

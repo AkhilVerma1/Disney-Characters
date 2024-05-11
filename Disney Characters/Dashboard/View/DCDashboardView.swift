@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct DCDashboardView: View, Sendable {
+    @State var searchText: String = ""
     @StateObject var viewModel: DCDashboardViewModel
     
     var body: some View {
@@ -20,6 +21,10 @@ struct DCDashboardView: View, Sendable {
                     Button("Retry") {
                         viewDidLoad()
                     }
+                }
+                .searchable(text: $searchText)
+                .onChange(of: searchText) { oldValue, newValue in
+                    viewModel.didSearchCharacters(newValue)
                 }
         }
     }
@@ -40,23 +45,30 @@ private extension DCDashboardView {
             if viewModel.isFetchingData {
                 DCFetcherView()
             } else {
-                dataView
+                if viewModel.isSearchError {
+                    ContentUnavailableView.search
+                } else {
+                    dataListView
+                }
             }
         }
     }
     
-    var dataView: some View {
-        VStack {
-            if !viewModel.charactersDisplayModels.isEmpty {
-                List {
-                    let bookmarkedCharacters = viewModel.getBookmarkedCharacters()
-                    if !bookmarkedCharacters.isEmpty {
-                        bookmarkedCharactersView(bookmarkedCharacters)
-                    }
-                    characterView(viewModel.charactersDisplayModels)
+    var dataListView: some View {
+        List {
+            let characterDisplayModels = viewModel.charactersDisplayModels
+            let bookmarkedCharacters = viewModel.getBookmarkedCharacters()
+            
+            if !bookmarkedCharacters.isEmpty {
+                Section("Bookmarked Characters") {
+                    bookmarkedCharactersView(bookmarkedCharacters)
                 }
-            } else {
-                contentUnavaliable
+            }
+            
+            if !characterDisplayModels.isEmpty {
+                Section("All Characters") {
+                    characterView(characterDisplayModels)
+                }
             }
         }
     }
@@ -75,19 +87,15 @@ private extension DCDashboardView {
         }
     }
     
-    var contentUnavaliable: some View {
-        ContentUnavailableView.init(
-            DCCustomError.noRecordFound.rawValue,
-            systemImage: "doc.plaintext.fill",
-            description: Text(viewModel.getNetworkError())
-        )
-    }
-    
     func bookmarkedCharactersView(_ characters: [DCCharacterDisplayModel]) -> some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 ForEach(characters) { character in
-                    DCCharacterImageView(imagePath: character.imageUrl)
+                    NavigationLink {
+                        Text(character.name)
+                    } label: {
+                        DCCharacterImageView(imagePath: character.imageUrl)
+                    }
                 }
             }
         }

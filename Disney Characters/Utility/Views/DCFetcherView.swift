@@ -10,9 +10,10 @@ import SwiftUI
 
 struct DCFetcherView: View {
     var body: some View {
-        HStack(spacing: 10) {
+        VStack(spacing: 10) {
             ProgressView()
-            Text("Fetching")
+            Text("Loading")
+                .fontDesign(.rounded)
         }
     }
 }
