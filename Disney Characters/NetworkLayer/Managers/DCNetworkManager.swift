@@ -15,6 +15,8 @@ class DCNetworkManager {
         do {
             let (data, response) = try await DCRouter.init().request(endPoint)
             return handleAPIResponse(T.self, data: data, response: response)
+        } catch {
+            throw error
         }
     }
 }

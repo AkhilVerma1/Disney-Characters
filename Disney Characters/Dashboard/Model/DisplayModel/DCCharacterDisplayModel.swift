@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct DCCharacterDisplayModel: Identifiable {
+struct DCCharacterDisplayModel: Identifiable, Equatable {
     var name: String
     var imageUrl: String
     var isBookmarked: Bool

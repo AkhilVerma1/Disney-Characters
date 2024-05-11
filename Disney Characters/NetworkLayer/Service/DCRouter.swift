@@ -16,6 +16,8 @@ class DCRouter {
             DCNetworkLogger.log(request: request)
             let result = try await DCRequestExecutor().execute(request)
             return result
+        } catch {
+            throw error
         }
     }
 }

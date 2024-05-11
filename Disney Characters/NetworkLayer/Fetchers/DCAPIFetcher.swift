@@ -26,7 +26,7 @@ class DCAPIFetcher: DCFetcher {
         do {
             return try await DCNetworkManager.init().request(api)
         } catch {
-            return (nil, DCNetworkResponse.failed.rawValue)
+            throw error
         }
     }
 }

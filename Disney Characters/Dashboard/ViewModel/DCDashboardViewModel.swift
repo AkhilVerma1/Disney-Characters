@@ -9,30 +9,42 @@
 import SwiftUI
 
 class DCDashboardViewModel: ObservableObject {
+    @Published var isError = false
     @Published var isFetchingData = false
-    @Published var characters: DCCharacterModel?
+    @Published var charactersDisplayModels: [DCCharacterDisplayModel] = []
+    
+    private var networkError: String?
+    private var characters: DCCharacterModel?
     
     @MainActor
     func setup() async {
+        isError = false
         isFetchingData.toggle()
-        characters = await DCCharacterModel.getCharacters()
+        
+        do {
+            characters = try await DCCharacterModel.getCharacters()
+            charactersDisplayModels = getCharactersDisplayModel(characters?.data ?? [])
+        } catch {
+            isError.toggle()
+            networkError = error.localizedDescription
+        }
+        
         isFetchingData.toggle()
     }
     
-    func getCharactersView() -> some View {
-        VStack {
-            if isFetchingData {
-                DCFetcherView()
-            } else {
-                if let characters = characters?.data {
-                    let characterDisplayModel = getCharactersDisplayModel(characters)
-                    DCCharacterView(characters: characterDisplayModel)
-                } else {
-                    ContentUnavailableView.search
-                }
-            }
-        }
+    func didTapCharacter(_ character: DCCharacterDisplayModel) {
+        guard let index = charactersDisplayModels.firstIndex(of: character) else { return }
+        charactersDisplayModels[index] = character
+        charactersDisplayModels[index].isBookmarked.toggle()
+        debugPrint(charactersDisplayModels[index].isBookmarked)
     }
+    
+    func getNetworkError() -> String? {
+        networkError
+    }
+}
+
+private extension DCDashboardViewModel {
     
     func getCharactersDisplayModel(_ characters: [DCCharacterAPIDataModel]) -> [DCCharacterDisplayModel] {
         characters.compactMap {

@@ -18,7 +18,12 @@ class DCRequestExecutor: NSObject, URLSessionDelegate {
     }
 
     func execute(_ request: URLRequest) async throws -> (Data, URLResponse) {
-        do { return try await getSession().data(for: request) }
+        do {
+            return try await getSession().data(for: request)
+        }
+        catch {
+            throw error
+        }
     }
 }
 

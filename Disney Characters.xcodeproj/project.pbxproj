@@ -38,6 +38,7 @@
 		469D18E82BEE01F4002A98D2 /* DCCharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469D18E72BEE01F4002A98D2 /* DCCharacterView.swift */; };
 		469D18EB2BEE07A2002A98D2 /* DCCharacterDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469D18EA2BEE07A2002A98D2 /* DCCharacterDisplayModel.swift */; };
 		469D18EE2BEE172E002A98D2 /* CachedAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469D18ED2BEE172E002A98D2 /* CachedAsyncImage.swift */; };
+		469D19282BEF7729002A98D2 /* DCUDConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469D19272BEF7729002A98D2 /* DCUDConstants.swift */; };
 		46A9DDD32BE5500900FC66EB /* Disney_CharactersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9DDD22BE5500900FC66EB /* Disney_CharactersApp.swift */; };
 		46A9DDD72BE5500A00FC66EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46A9DDD62BE5500A00FC66EB /* Assets.xcassets */; };
 		46A9DDDA2BE5500A00FC66EB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46A9DDD92BE5500A00FC66EB /* Preview Assets.xcassets */; };
@@ -96,6 +97,7 @@
 		469D18E72BEE01F4002A98D2 /* DCCharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCCharacterView.swift; sourceTree = "<group>"; };
 		469D18EA2BEE07A2002A98D2 /* DCCharacterDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCCharacterDisplayModel.swift; sourceTree = "<group>"; };
 		469D18ED2BEE172E002A98D2 /* CachedAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImage.swift; sourceTree = "<group>"; };
+		469D19272BEF7729002A98D2 /* DCUDConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCUDConstants.swift; sourceTree = "<group>"; };
 		46A9DDCF2BE5500900FC66EB /* Disney Characters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Disney Characters.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		46A9DDD22BE5500900FC66EB /* Disney_CharactersApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disney_CharactersApp.swift; sourceTree = "<group>"; };
 		46A9DDD62BE5500A00FC66EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 		469D18E22BEDFF82002A98D2 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				469D19252BEF7713002A98D2 /* UserDefaults */,
 				469D18EC2BEE1723002A98D2 /* Service */,
 				469D18E32BEDFF8C002A98D2 /* Views */,
 			);
@@ -282,6 +285,22 @@
 				469D18ED2BEE172E002A98D2 /* CachedAsyncImage.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		469D19252BEF7713002A98D2 /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				469D19262BEF7718002A98D2 /* Constants */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		469D19262BEF7718002A98D2 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				469D19272BEF7729002A98D2 /* DCUDConstants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		46A9DDC62BE5500900FC66EB = {
@@ -506,6 +525,7 @@
 				469D18E52BEDFF9B002A98D2 /* DCFetcherView.swift in Sources */,
 				4664DD152BE765D1006EA71B /* DCResult.swift in Sources */,
 				469D18EE2BEE172E002A98D2 /* CachedAsyncImage.swift in Sources */,
+				469D19282BEF7729002A98D2 /* DCUDConstants.swift in Sources */,
 				4664DD0F2BE765D1006EA71B /* DCAPIFetcher.swift in Sources */,
 				4664DD192BE765D1006EA71B /* DCHTTPMethod.swift in Sources */,
 				4664DD142BE765D1006EA71B /* DCNetworkResponse.swift in Sources */,
