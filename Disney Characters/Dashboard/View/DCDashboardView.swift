@@ -16,6 +16,11 @@ struct DCDashboardView: View, Sendable {
             containerView
                 .onAppear(perform: viewDidLoad)
                 .navigationTitle("Dashboard")
+                .alert(viewModel.getNetworkError(), isPresented: $viewModel.isError) {
+                    Button("Retry") {
+                        viewDidLoad()
+                    }
+                }
         }
     }
 }
@@ -23,9 +28,10 @@ struct DCDashboardView: View, Sendable {
 private extension DCDashboardView {
     
     func viewDidLoad() {
-        guard viewModel.charactersDisplayModels.isEmpty else { return }
-        Task {
-            await viewModel.setup()
+        if viewModel.charactersDisplayModels.isEmpty {
+            Task {
+                await viewModel.setup()
+            }
         }
     }
     
@@ -34,17 +40,8 @@ private extension DCDashboardView {
             if viewModel.isFetchingData {
                 DCFetcherView()
             } else {
-                contentView
+                dataView
             }
-        }
-    }
-    
-    @ViewBuilder
-    var contentView: some View {
-        if viewModel.isError {
-            Text(viewModel.getNetworkError())
-        } else {
-            dataView
         }
     }
     
@@ -79,7 +76,11 @@ private extension DCDashboardView {
     }
     
     var contentUnavaliable: some View {
-        ContentUnavailableView.search
+        ContentUnavailableView.init(
+            DCCustomError.noRecordFound.rawValue,
+            systemImage: "doc.plaintext.fill",
+            description: Text(viewModel.getNetworkError())
+        )
     }
     
     func bookmarkedCharactersView(_ characters: [DCCharacterDisplayModel]) -> some View {

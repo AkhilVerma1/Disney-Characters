@@ -11,7 +11,7 @@ import Foundation
 class DCNetworkManager {
 
     func request<T: Codable>(_ endPoint: DCRequestType?) async throws -> (responseModel: T?, error: String?) {
-        guard let endPoint = endPoint else { return (nil, "Endpoint is invalid") }
+        guard let endPoint = endPoint else { throw DCCustomError.invalidRequest }
         do {
             let (data, response) = try await DCRouter.init().request(endPoint)
             return handleAPIResponse(T.self, data: data, response: response)

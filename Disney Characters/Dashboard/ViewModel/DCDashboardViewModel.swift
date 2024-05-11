@@ -17,16 +17,17 @@ class DCDashboardViewModel: ObservableObject {
     private var characters: DCCharacterModel?
     
     @MainActor
-    func setup() async {
+    func setup(_ api: DCRequestType? = DCRequestConfiguration.shared.getConfiguration(.disneyCharacters)) async {
         isError = false
         isFetchingData.toggle()
         
         do {
-            characters = try await DCCharacterModel.getCharacters()
-            charactersDisplayModels = getCharactersDisplayModel(characters?.data ?? [])
+            guard let characters = try await DCCharacterModel.getCharacters(api) else { throw DCCustomError.noRecordFound }
+            self.characters = characters
+            charactersDisplayModels = getCharactersDisplayModel(characters.data)
         } catch {
             isError.toggle()
-            networkError = error.localizedDescription
+            networkError = (error as? DCCustomError)?.rawValue ?? error.localizedDescription
         }
         
         isFetchingData.toggle()

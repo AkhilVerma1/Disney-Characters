@@ -12,9 +12,7 @@ struct DCCharacterModel: Codable {
     var data: [DCCharacterAPIDataModel] = []
     
     @MainActor
-    static func getCharacters() async throws -> DCCharacterModel? {
-        let api = DCRequestConfiguration.shared.getConfiguration(.disneyCharacters)
-        
+    static func getCharacters(_ api: DCRequestType?) async throws -> DCCharacterModel? {
         do {
             let result = try await DCAPIFetcher
                 .init()
@@ -30,4 +28,17 @@ struct DCCharacterModel: Codable {
 
 enum DCCustomError: String, Error {
     case SWR = "Something went wrong"
+    case noRecordFound = "No Record Found"
+    case invalidRequest = "Invalid Request"
+    
+    var localizedDescription: String {
+          switch self {
+          case .SWR:
+              return NSLocalizedString("Something went wrong", comment: "")
+          case .noRecordFound:
+              return NSLocalizedString("No Record Found", comment: "")
+          case .invalidRequest:
+              return NSLocalizedString("Invalid Request", comment: "")
+          }
+      }
 }

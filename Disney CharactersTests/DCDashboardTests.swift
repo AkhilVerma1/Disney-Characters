@@ -10,7 +10,6 @@ import XCTest
 @testable import Disney_Characters
 
 final class DCDashboardTests: XCTestCase {
-    
     private let viewModel = DCDashboardViewModel()
     
     override func setUpWithError() throws {}
@@ -18,6 +17,19 @@ final class DCDashboardTests: XCTestCase {
     
     func testShouldReturnTheDisneyCharacters() async throws {
         await viewModel.setup()
-        XCTAssertNotNil(viewModel.characters)
+        XCTAssertNotNil(viewModel.charactersDisplayModels)
+    }
+    
+    func testShouldAddCharacterToBookmarkListOnTappingTheBookmarkIcon() async throws {
+        await viewModel.setup()
+        let character = viewModel.charactersDisplayModels.first
+        viewModel.didTapBookmarkCharacter(character!)
+        XCTAssertFalse(viewModel.getBookmarkedCharacters().isEmpty)
+    }
+    
+    func testShouldReturnErrorOnInvalidRequestType() async throws {
+        await viewModel.setup(nil)
+        XCTAssertTrue(viewModel.isError)
+        XCTAssertNotEqual(viewModel.getNetworkError(), DCCustomError.SWR.rawValue)
     }
 }
