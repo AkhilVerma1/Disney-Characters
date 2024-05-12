@@ -19,7 +19,9 @@ struct CachedAsyncImage<Content>: View where Content: View {
     
     public var body: some View {
         content(phase)
-            .task(id: urlRequest, load)
+            .task(id: urlRequest) {
+                await load()
+            }
     }
     
     init(url: URL?, urlCache: URLCache = .shared, scale: CGFloat = 1, transaction: Transaction = Transaction(), @ViewBuilder content: @escaping (AsyncImagePhase) -> Content) {
@@ -46,7 +48,6 @@ struct CachedAsyncImage<Content>: View where Content: View {
         }
     }
     
-    @Sendable
     private func load() async {
         do {
             if let urlRequest = urlRequest {
@@ -72,6 +73,7 @@ struct CachedAsyncImage<Content>: View where Content: View {
 }
 
 private extension CachedAsyncImage {
+    
     func remoteImage(from request: URLRequest, session: URLSession) async throws -> (Image, URLSessionTaskMetrics) {
         let (data, _, metrics) = try await session.data(for: request)
         if metrics.redirectCount > 0, let lastResponse = metrics.transactionMetrics.last?.response {
