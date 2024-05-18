@@ -18,9 +18,7 @@ struct DCDashboardView: View, Sendable {
                 .onAppear(perform: viewDidLoad)
                 .navigationTitle("Dashboard")
                 .alert(viewModel.getNetworkError(), isPresented: $viewModel.isError) {
-                    Button("Retry") {
-                        viewDidLoad()
-                    }
+                    viewModel.getAlertView()
                 }
                 .searchable(text: $searchText)
                 .onChange(of: searchText) { oldValue, newValue in
@@ -56,8 +54,8 @@ private extension DCDashboardView {
     
     var dataListView: some View {
         List {
-            let characterDisplayModels = viewModel.charactersDisplayModels
             let bookmarkedCharacters = viewModel.getBookmarkedCharacters()
+            let characterDisplayModels = viewModel.charactersDisplayModels
             
             if !bookmarkedCharacters.isEmpty {
                 Section("Bookmarked Characters") {
@@ -78,9 +76,7 @@ private extension DCDashboardView {
             NavigationLink {
                 Text(character.name)
             } label: {
-                DCCharacterView(
-                    character: character
-                ) {
+                DCCharacterView(character: character) {
                     viewModel.didTapBookmarkCharacter(character)
                 }
             }

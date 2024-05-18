@@ -17,6 +17,14 @@ class DCDashboardViewModel: ObservableObject {
     private var networkError: String?
     private var characters: DCCharacterModel?
     
+    func getAlertView() -> some View {
+        Button("Retry") {
+            Task {
+                await self.setup()
+            }
+        }
+    }
+    
     @MainActor
     func setup(_ api: DCRequestType? = DCRequestConfiguration.shared.getConfiguration(.disneyCharacters)) async {
         isError = false
