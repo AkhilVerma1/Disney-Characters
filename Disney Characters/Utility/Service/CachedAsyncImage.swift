@@ -80,7 +80,7 @@ private extension CachedAsyncImage {
             let requests = metrics.transactionMetrics.map { $0.request }
             requests.forEach(session.configuration.urlCache!.removeCachedResponse)
             let lastCachedResponse = CachedURLResponse(response: lastResponse, data: data)
-            session.configuration.urlCache!.storeCachedResponse(lastCachedResponse, for: request)
+            session.configuration.urlCache?.storeCachedResponse(lastCachedResponse, for: request)
         }
         return (try image(from: data), metrics)
     }
