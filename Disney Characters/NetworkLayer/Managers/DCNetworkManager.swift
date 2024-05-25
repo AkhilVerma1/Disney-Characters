@@ -9,12 +9,12 @@
 import Foundation
 
 class DCNetworkManager {
-
+    
     func request<T: Codable>(_ endPoint: DCRequestType?) async throws -> (responseModel: T?, error: String?) {
         guard let endPoint = endPoint else { throw DCCustomError.invalidRequest }
         do {
             let (data, response) = try await DCRouter.init().request(endPoint)
-            return handleAPIResponse(T.self, data: data, response: response)
+            return try handleAPIResponse(T.self, data: data, response: response)
         } catch {
             throw error
         }
@@ -22,34 +22,32 @@ class DCNetworkManager {
 }
 
 private extension DCNetworkManager {
-
+    
     func getAPIModel<T: Codable>(_ model: T.Type, responseData: Data) -> T? {
-        try? JSONDecoder.init().decode(T.self, from: responseData)
+        try? JSONDecoder().decode(T.self, from: responseData)
     }
-
+    
     func getAPIError(_ data: Data?) -> String? {
         guard let data = data else { return nil }
         guard let jsonData = try? JSONSerialization.jsonObject(with: data) as? [AnyHashable: Any],
-                let errorMessage = jsonData[DCNetworkConstants.reason] else { return nil }
-
+              let errorMessage = jsonData[DCNetworkConstants.reason] else { return nil }
+        
         return errorMessage as? String
     }
-
-    func handleAPIResponse<T: Codable>(_ model: T.Type, data: Data?, response: URLResponse?) -> (T?, String?) {
-        guard let response = response as? HTTPURLResponse
-        else { return (nil, DCNetworkConstants.checkNetworkConnection) }
-
+    
+    func handleAPIResponse<T: Codable>(_ model: T.Type, data: Data?, response: URLResponse?) throws -> (T?, String?) {
+        guard let response = response as? HTTPURLResponse else { throw DCCustomError.invalidRequest }
+        
         switch handleNetworkResponse(response) {
         case .success:
-            guard let responseData = data else { return (nil, DCNetworkResponse.noData.rawValue) }
+            guard let responseData = data else { throw DCCustomError.invalidRequest }
             return (getAPIModel(T.self, responseData: responseData), nil)
-
+            
         case.failure(let networkFailureError):
-            debugPrint("Disney Characters-API error: \(getAPIError(data) ?? "")")
             return (nil, networkFailureError)
         }
     }
-
+    
     func handleNetworkResponse(_ response: HTTPURLResponse) -> DCResult<String> {
         switch response.statusCode {
         case 200...299: return .success
