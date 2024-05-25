@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct DCDashboardView: View, Sendable {
     @State var searchText: String = ""
@@ -79,9 +80,7 @@ private extension DCDashboardView {
             NavigationLink {
                 Text(character.name)
             } label: {
-                DCCharacterView(character: character) {
-                    viewModel.didTapBookmarkCharacter(character)
-                }
+                DCCharacterView(character: character, bookmarkSubject: viewModel.bookmarkSubject)
             }
         }
     }

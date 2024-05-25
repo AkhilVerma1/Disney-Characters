@@ -7,15 +7,26 @@
 //
 
 import SwiftUI
+import Combine
 
 class DCDashboardViewModel: ObservableObject {
     @Published var isError = false
     @Published var isSearchError = false
     @Published var isFetchingData = false
     @Published var charactersDisplayModels: [DCCharacterDisplayModel] = []
+    private var cancellables = Set<AnyCancellable>()
+    let bookmarkSubject = PassthroughSubject<DCCharacterDisplayModel, Never>()
     
     private var networkError: String?
     private var characters: DCCharacterModel?
+    
+    init() {
+        bookmarkSubject
+            .sink { [weak self] character in
+                self?.didTapBookmarkCharacter(character)
+            }
+            .store(in: &cancellables)
+    }
     
     func getAlertView() -> some View {
         Button("Retry") {

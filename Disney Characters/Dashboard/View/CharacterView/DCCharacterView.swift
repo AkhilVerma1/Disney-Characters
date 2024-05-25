@@ -7,10 +7,11 @@
 //
 
 import SwiftUI
+import Combine
 
 struct DCCharacterView: View {
     var character: DCCharacterDisplayModel
-    var onTap: () -> Void
+    var bookmarkSubject: PassthroughSubject<DCCharacterDisplayModel, Never>
     
     var body: some View {
         HStack {
@@ -23,14 +24,12 @@ struct DCCharacterView: View {
             Image(systemName: character.isBookmarked ? "star.fill" : "star")
                 .foregroundStyle(.blue)
                 .onTapGesture {
-                    onTap()
+                    bookmarkSubject.send(character)
                 }
         }
     }
 }
 
-#Preview {
-    DCCharacterView(character: DCCharacterDisplayModel(name: "", imageUrl: "", isBookmarked: false)) {
-        
-    }
-}
+//#Preview {
+//    DCCharacterView(character: DCCharacterDisplayModel(name: "", imageUrl: "", isBookmarked: false))
+//}
