@@ -60,15 +60,18 @@ private extension DCDashboardView {
             if !bookmarkedCharacters.isEmpty {
                 Section("Bookmarked Characters") {
                     bookmarkedCharactersView(bookmarkedCharacters)
+                        .listRowSeparator(.hidden)
                 }
             }
             
             if !characterDisplayModels.isEmpty {
                 Section("All Characters") {
                     characterView(characterDisplayModels)
+                        .listRowSeparator(.hidden)
                 }
             }
         }
+        .listStyle(.plain)
     }
     
     func characterView(_ characters: [DCCharacterDisplayModel]) -> some View {

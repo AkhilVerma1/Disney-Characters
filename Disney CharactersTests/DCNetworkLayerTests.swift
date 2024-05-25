@@ -17,7 +17,7 @@ final class DCNetworkLayerTests: XCTestCase {
         let path = "users"
         
         let request = DCRequestType(
-            baseURL: URL(string: "https://api.github.com") ?? URL(filePath: ""),
+            baseURL: URL(string: "https://api.github.com")!,
             path: path,
             httpMethod: .get,
             task: .request
@@ -29,7 +29,7 @@ final class DCNetworkLayerTests: XCTestCase {
             .setFetchMode(.online)
             .fetch([DCGithubTestResponseModel].self)
                 
-        XCTAssertGreaterThan(result?.responseModel?.count ?? 0, 0)
+        XCTAssertGreaterThan(result!.responseModel!.count, 0)
     }
     
     func testShouldReturnAInvalidResponseOnInvalidRequestParameters() async throws {
@@ -40,33 +40,7 @@ final class DCNetworkLayerTests: XCTestCase {
         )
         
         let request = DCRequestType(
-            baseURL: URL(string: "fake") ?? URL(filePath: ""),
-            path: "",
-            httpMethod: .get,
-            task: task
-        )
-        
-        let result = try? await DCAPIFetcher
-            .init()
-            .withAPI(request)
-            .setFetchMode(.online)
-            .fetch(DCGithubTestResponseModel.self)
-        
-        XCTAssertNil(result)
-    }
-    
-    func testShouldThrowErrorOnInvalidURLAndRequestParametersHeaders() async throws {
-        let headers = ["shouldfail": "failing case"]
-        
-        let task: DCHTTPTask = .requestParametersAndHeaders(
-            bodyParameters: headers,
-            bodyEncoding: .urlEncoding,
-            urlParameters: headers,
-            additionHeaders: headers
-        )
-        
-        let request = DCRequestType(
-            baseURL: URL(string: "https://invalid.github.com") ?? URL(filePath: ""),
+            baseURL: URL(string: "fake")!,
             path: "",
             httpMethod: .get,
             task: task
@@ -81,6 +55,32 @@ final class DCNetworkLayerTests: XCTestCase {
         XCTAssertNil(result?.responseModel)
     }
     
+    func testShouldThrowErrorOnInvalidURLAndRequestParametersHeaders() async throws {
+        let headers = ["shouldfail": "failing case"]
+        
+        let task: DCHTTPTask = .requestParametersAndHeaders(
+            bodyParameters: headers,
+            bodyEncoding: .urlEncoding,
+            urlParameters: headers,
+            additionHeaders: headers
+        )
+        
+        let request = DCRequestType(
+            baseURL: URL(string: "https://invalid.github.com")!,
+            path: "",
+            httpMethod: .get,
+            task: task
+        )
+        
+        let result = try? await DCAPIFetcher
+            .init()
+            .withAPI(request)
+            .setFetchMode(.online)
+            .fetch(DCGithubTestResponseModel.self)
+        
+        XCTAssertNotNil(result?.error)
+    }
+    
     func testShouldThrowAnErrorOnInvalidURL() async throws {
         let headers = ["shouldfail": "failing case"]
         
@@ -92,7 +92,7 @@ final class DCNetworkLayerTests: XCTestCase {
         )
         
         let request = DCRequestType(
-            baseURL: URL(string: "https://invalid.github.com") ?? URL(filePath: ""),
+            baseURL: URL(string: "https://invalid.github.com")!,
             path: "",
             httpMethod: .get,
             task: task
