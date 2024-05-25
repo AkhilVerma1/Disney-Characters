@@ -14,11 +14,12 @@ class DCDashboardViewModel: ObservableObject {
     @Published var isSearchError = false
     @Published var isFetchingData = false
     @Published var charactersDisplayModels: [DCCharacterDisplayModel] = []
-    private var cancellables = Set<AnyCancellable>()
+    
     let bookmarkSubject = PassthroughSubject<DCCharacterDisplayModel, Never>()
     
     private var networkError: String?
     private var characters: DCCharacterModel?
+    private var cancellables = Set<AnyCancellable>()
     
     init() {
         bookmarkSubject

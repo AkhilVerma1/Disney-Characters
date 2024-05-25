@@ -80,7 +80,10 @@ private extension DCDashboardView {
             NavigationLink {
                 Text(character.name)
             } label: {
-                DCCharacterView(character: character, bookmarkSubject: viewModel.bookmarkSubject)
+                DCCharacterView(
+                    character: character,
+                    bookmarkSubject: viewModel.bookmarkSubject
+                )
             }
         }
     }

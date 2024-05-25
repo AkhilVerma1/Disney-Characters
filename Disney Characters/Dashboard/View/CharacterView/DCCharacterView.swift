@@ -30,6 +30,6 @@ struct DCCharacterView: View {
     }
 }
 
-//#Preview {
-//    DCCharacterView(character: DCCharacterDisplayModel(name: "", imageUrl: "", isBookmarked: false))
-//}
+#Preview {
+    DCCharacterView(character: DCCharacterDisplayModel(name: "Disney Character", imageUrl: "", isBookmarked: false), bookmarkSubject: .init())
+}
