@@ -17,6 +17,7 @@ struct DCCharacterView: View {
         HStack {
             DCCharacterImageView(imagePath: character.imageUrl)
                 .frame(width: 70, height: 70)
+            
             Text(character.name)
                 .bold()
             
@@ -32,5 +33,11 @@ struct DCCharacterView: View {
 }
 
 #Preview {
-    DCCharacterView(character: DCCharacterDisplayModel(name: "Disney Character", imageUrl: "", isBookmarked: false), bookmarkSubject: .init())
+    DCCharacterView(
+        character: DCCharacterDisplayModel(
+            name: "Disney Character",
+            imageUrl: "",
+            isBookmarked: false),
+        bookmarkSubject: .init()
+    )
 }

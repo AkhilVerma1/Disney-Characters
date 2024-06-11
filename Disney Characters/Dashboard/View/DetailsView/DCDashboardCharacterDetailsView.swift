@@ -11,19 +11,22 @@ import SwiftUI
 struct DCDashboardCharacterDetailsView: View {
     var character: DCCharacterDisplayModel
     
+    private let imageSize = CGSize(
+        width: UIScreen.main.bounds.width - 10,
+        height: 400
+    )
+    
     var body: some View {
-        VStack {
+        VStack(alignment: .center) {
             DCCharacterImageView(
                 imagePath: character.imageUrl,
-                imageSize: CGSize(width: 350, height: 350)
+                imageSize: imageSize
             )
-            
-            Text(character.name)
-                .font(.headline)
             
             Spacer()
         }
         .padding()
+        .navigationTitle(character.name)
     }
 }
 
