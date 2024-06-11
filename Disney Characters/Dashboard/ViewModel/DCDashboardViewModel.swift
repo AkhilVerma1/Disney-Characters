@@ -29,21 +29,20 @@ class DCDashboardViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    func getAlertView() -> some View {
-        Button("Retry") {
-            Task {
-                await self.setup()
-            }
-        }
-    }
-    
     @MainActor
     func setup(_ api: DCRequestType? = DCRequestConfiguration.shared.getConfiguration(.disneyCharacters)) async {
         isError = false
         isFetchingData.toggle()
         
+        let disneyAPI = DCRequestType(
+            baseURL: DCURL.shared.getBaseURL() ?? URL(filePath: ""),
+            path: DCURLPath.character,
+            httpMethod: .get,
+            task: .request
+        )
+        
         do {
-            guard let characters = try await DCCharacterModel.getCharacters(api) else { throw DCCustomError.noRecordFound }
+            guard let characters = try await DCCharacterModel.getCharacters(disneyAPI) else { throw DCCustomError.noRecordFound }
             self.characters = characters
             charactersDisplayModels = getCharactersDisplayModel(characters.data)
         } catch {
@@ -57,7 +56,7 @@ class DCDashboardViewModel: ObservableObject {
     @MainActor
     func didSearchCharacters(_ searchText: String) {
         let characters = getCharactersDisplayModel(characters?.data ?? [])
-        charactersDisplayModels = searchText.isEmpty ? characters :characters.filter { $0.name.contains(searchText) }
+        charactersDisplayModels = searchText.isEmpty ? characters : characters.filter { $0.name.lowercased().contains(searchText.lowercased()) }
         isSearchError = searchText.isEmpty ? false : charactersDisplayModels.isEmpty
     }
     

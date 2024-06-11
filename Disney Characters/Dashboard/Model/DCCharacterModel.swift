@@ -11,7 +11,6 @@ import Foundation
 struct DCCharacterModel: Codable {
     var data: [DCCharacterAPIDataModel] = []
     
-    @MainActor
     static func getCharacters(_ api: DCRequestType?) async throws -> DCCharacterModel? {
         do {
             let result = try await DCAPIFetcher

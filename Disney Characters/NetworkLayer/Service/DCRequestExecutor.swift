@@ -8,38 +8,41 @@
 
 import Foundation
 
-class DCRequestExecutor: NSObject, URLSessionDelegate {
+private actor DCSessionManager {
     private var session: URLSession?
-    private let apiTimeOut: Double = 90
 
-    override init() {
-        super.init()
-        setup()
-    }
-
-    func execute(_ request: URLRequest) async throws -> (Data, URLResponse) {
-        do {
-            return try await getSession().data(for: request)
-        }
-        catch {
-            throw error
-        }
-    }
-}
-
-private extension DCRequestExecutor {
-
-    func setup() {
+    func setup(apiTimeOut: Double, delegate: URLSessionDelegate) {
         let configuration = URLSessionConfiguration.default
         configuration.waitsForConnectivity = false
         configuration.timeoutIntervalForRequest = apiTimeOut
 
         session = URLSession(configuration: configuration,
-                             delegate: self,
+                             delegate: delegate,
                              delegateQueue: nil)
     }
 
-    func getSession() -> URLSession {
-        session ?? URLSession(configuration: .default, delegate: self, delegateQueue: nil)
+    func getSession(delegate: URLSessionDelegate) -> URLSession {
+        session ?? URLSession(configuration: .default, delegate: delegate, delegateQueue: nil)
+    }
+}
+
+final class DCRequestExecutor: NSObject, URLSessionDelegate, @unchecked Sendable {
+    private let sessionManager = DCSessionManager()
+    private let apiTimeOut: Double = 90
+
+    override init() {
+        super.init()
+        Task {
+            await sessionManager.setup(apiTimeOut: apiTimeOut, delegate: self)
+        }
+    }
+
+    func execute(_ request: URLRequest) async throws -> (Data, URLResponse) {
+        do {
+            let session = await sessionManager.getSession(delegate: self)
+            return try await session.data(for: request)
+        } catch {
+            throw error
+        }
     }
 }

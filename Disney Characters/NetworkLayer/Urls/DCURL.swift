@@ -9,7 +9,7 @@
 import Foundation
 
 class DCURL {
-    static let shared = DCURL()
+    nonisolated(unsafe) static let shared = DCURL()
     private let security = "https://"
     private var infoDict: [String: Any]? = Bundle.main.infoDictionary
 

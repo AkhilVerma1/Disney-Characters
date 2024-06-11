@@ -19,7 +19,11 @@ struct DCDashboardView: View, Sendable {
                 .onAppear(perform: viewDidLoad)
                 .navigationTitle("Dashboard")
                 .alert(viewModel.getNetworkError(), isPresented: $viewModel.isError) {
-                    viewModel.getAlertView()
+                    Button("Retry") {
+                        Task {
+                            await viewModel.setup()
+                        }
+                    }
                 }
                 .searchable(text: $searchText)
                 .onChange(of: searchText) { oldValue, newValue in
@@ -78,7 +82,7 @@ private extension DCDashboardView {
     func characterView(_ characters: [DCCharacterDisplayModel]) -> some View {
         ForEach(characters) { character in
             NavigationLink {
-                Text(character.name)
+                DCDashboardCharacterDetailsView(character: character)
             } label: {
                 DCCharacterView(
                     character: character,

@@ -16,6 +16,7 @@ struct DCCharacterView: View {
     var body: some View {
         HStack {
             DCCharacterImageView(imagePath: character.imageUrl)
+                .frame(width: 70, height: 70)
             Text(character.name)
                 .bold()
             

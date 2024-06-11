@@ -10,9 +10,10 @@ import SwiftUI
 
 struct DCCharacterImageView: View {
     var imagePath: String
+    var imageSize = CGSize(width: 70, height: 70)
     
     var body: some View {
-        CachedAsyncImage(url: URL(string: imagePath)) { phase in
+        AsyncImage(url: URL(string: imagePath)) { phase in
             switch phase {
             case .empty:
                 ProgressView()
@@ -20,7 +21,7 @@ struct DCCharacterImageView: View {
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: 70, height: 70)
+                    .frame(width: imageSize.width, height: imageSize.height)
                     .clipShape(Circle())
             default:
                 Image(systemName: "photo.circle")
@@ -29,7 +30,6 @@ struct DCCharacterImageView: View {
                     .clipShape(Circle())
             }
         }
-        .frame(width: 70, height: 70)
     }
 }
 
