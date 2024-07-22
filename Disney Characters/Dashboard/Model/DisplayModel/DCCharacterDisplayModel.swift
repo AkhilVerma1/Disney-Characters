@@ -9,8 +9,8 @@
 import Foundation
 
 struct DCCharacterDisplayModel: Identifiable, Equatable {
+    var id: Int
     var name: String
     var imageUrl: String
     var isBookmarked: Bool
-    var id: String = UUID().uuidString
 }

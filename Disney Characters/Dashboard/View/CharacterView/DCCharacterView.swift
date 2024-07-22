@@ -35,6 +35,7 @@ struct DCCharacterView: View {
 #Preview {
     DCCharacterView(
         character: DCCharacterDisplayModel(
+            id: 1,
             name: "Disney Character",
             imageUrl: "",
             isBookmarked: false),

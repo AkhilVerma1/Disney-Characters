@@ -14,7 +14,7 @@ struct Disney_CharactersApp: App {
     
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            DCCharactersLocalStorageDataModel.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
         
@@ -25,20 +25,9 @@ struct Disney_CharactersApp: App {
         }
     }()
     
-    
     var body: some Scene {
         WindowGroup {
-            DCDashboardView(viewModel: DCDashboardViewModel())
+            DCDashboardView(viewModel: DCDashboardViewModel(sharedModelContainer.mainContext))
         }
-        .modelContainer(sharedModelContainer)
-    }
-}
-
-@Model
-final class Item {
-    var timestamp: Date
-    
-    init(timestamp: Date) {
-        self.timestamp = timestamp
     }
 }

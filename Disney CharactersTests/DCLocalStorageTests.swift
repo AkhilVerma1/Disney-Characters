@@ -11,7 +11,8 @@ import Testing
 
 struct DCLocalStorageTests {
 
-    @Test func testSwiftDataLocally() async throws {
+    @Test
+    func testSwiftDataLocally() async throws {
         // Write your test here and use APIs like `#expect(...)` to check expected conditions.
         let viewModel = DCDashboardViewModel()
         #expect(viewModel.getBookmarkedCharacters().count == 0)

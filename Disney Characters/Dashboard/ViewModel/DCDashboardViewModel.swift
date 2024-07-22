@@ -8,12 +8,17 @@
 
 import SwiftUI
 import Combine
+import SwiftData
 
 class DCDashboardViewModel: ObservableObject {
     @Published var isError = false
     @Published var isSearchError = false
     @Published var isFetchingData = false
     @Published var charactersDisplayModels: [DCCharacterDisplayModel] = []
+
+    private var bookmarkedCharacteresDisplayModel: [DCCharacterDisplayModel] = []
+    
+    private var modelContext: ModelContext
     
     let bookmarkSubject = PassthroughSubject<DCCharacterDisplayModel, Never>()
     
@@ -21,7 +26,9 @@ class DCDashboardViewModel: ObservableObject {
     private var characters: DCCharacterModel?
     private var cancellables = Set<AnyCancellable>()
     
-    init() {
+    init(_ modelContext: ModelContext) {
+        self.modelContext = modelContext
+        
         bookmarkSubject
             .sink { [weak self] character in
                 self?.didTapBookmarkCharacter(character)
@@ -30,7 +37,34 @@ class DCDashboardViewModel: ObservableObject {
     }
     
     @MainActor
-    func setup(_ api: DCRequestType? = DCRequestConfiguration.shared.getConfiguration(.disneyCharacters)) async {
+    func viewDidAppear() {
+        updateBookmarkedCharacters()
+        
+        if charactersDisplayModels.isEmpty {
+            Task {
+                await setup()
+            }
+        }
+    }
+    
+    func updateBookmarkedCharacters() {
+        bookmarkedCharacteresDisplayModel = getLocalStorageCharacters().compactMap {
+            DCCharacterDisplayModel(
+                id: $0.id,
+                name: $0.name,
+                imageUrl: $0.imageUrl,
+                isBookmarked: true
+            )
+        }
+    }
+    
+    private func getLocalStorageCharacters() -> [DCCharactersLocalStorageDataModel] {
+        let descriptor = FetchDescriptor<DCCharactersLocalStorageDataModel>(sortBy: [SortDescriptor(\.time)])
+        return (try? modelContext.fetch(descriptor)) ?? []
+    }
+    
+    @MainActor
+    private func setup(_ api: DCRequestType? = DCRequestConfiguration.shared.getConfiguration(.disneyCharacters)) async {
         isError = false
         isFetchingData.toggle()
         
@@ -61,13 +95,15 @@ class DCDashboardViewModel: ObservableObject {
     }
     
     func didTapBookmarkCharacter(_ character: DCCharacterDisplayModel) {
+        let item = DCCharactersLocalStorageDataModel(id: character.id, time: .now, name: character.name, imageUrl: character.imageUrl)
+        character.isBookmarked ? modelContext.delete(item) : modelContext.insert(item)
+        updateBookmarkedCharacters()
         guard let index = charactersDisplayModels.firstIndex(of: character) else { return }
-        charactersDisplayModels[index] = character
         charactersDisplayModels[index].isBookmarked.toggle()
     }
     
     func getBookmarkedCharacters() -> [DCCharacterDisplayModel] {
-        charactersDisplayModels.filter { $0.isBookmarked }
+        bookmarkedCharacteresDisplayModel
     }
     
     func getNetworkError() -> String {
@@ -79,14 +115,17 @@ private extension DCDashboardViewModel {
     
     func getCharactersDisplayModel(_ characters: [DCCharacterAPIDataModel]) -> [DCCharacterDisplayModel] {
         characters.compactMap {
-            guard let name = $0.name, let imageURL = $0.imageUrl else { return nil }
+            guard let name = $0.name, let imageURL = $0.imageUrl, let id = $0._id else { return nil }
             return DCCharacterDisplayModel(
+                id: id,
                 name: name,
                 imageUrl: imageURL,
-                isBookmarked: isCharacterBookmarked($0._id)
+                isBookmarked: isCharacterBookmarked(id)
             )
         }
     }
     
-    func isCharacterBookmarked(_ id: Int?) -> Bool { false }
+    func isCharacterBookmarked(_ id: Int) -> Bool {
+        bookmarkedCharacteresDisplayModel.contains { $0.id == id }
+    }
 }

@@ -6,13 +6,13 @@
 //  Copyright © 2024 OCloud Labs. All rights reserved.
 //
 
-import XCTest
+import Testing
+import Foundation
 @testable import Disney_Characters
 
-final class DCNetworkLayerTests: XCTestCase {
-    override func setUpWithError() throws {}
-    override func tearDownWithError() throws {}
-    
+final class DCNetworkLayerTests {
+
+    @Test 
     func testShouldReturnAValidResponseOnValidRequest() async throws {
         let path = "users"
         
@@ -28,10 +28,11 @@ final class DCNetworkLayerTests: XCTestCase {
             .withAPI(request)
             .setFetchMode(.online)
             .fetch([DCGithubTestResponseModel].self)
-                
-        XCTAssertGreaterThan(result!.responseModel!.count, 0)
+        
+        #expect(result?.responseModel?.count ?? 0 > 0)
     }
     
+    @Test
     func testShouldReturnAInvalidResponseOnInvalidRequestParameters() async throws {
         let task: DCHTTPTask = .requestParameters(
             bodyParameters: ["fake": "fake"],
@@ -52,9 +53,10 @@ final class DCNetworkLayerTests: XCTestCase {
             .setFetchMode(.online)
             .fetch(DCGithubTestResponseModel.self)
         
-        XCTAssertNil(result?.responseModel)
+        #expect(result?.responseModel == nil)
     }
     
+    @Test
     func testShouldThrowErrorOnInvalidURLAndRequestParametersHeaders() async throws {
         let headers = ["shouldfail": "failing case"]
         
@@ -78,9 +80,10 @@ final class DCNetworkLayerTests: XCTestCase {
             .setFetchMode(.online)
             .fetch(DCGithubTestResponseModel.self)
         
-        XCTAssertNotNil(result?.error)
+        #expect(result?.error != nil)
     }
     
+    @Test
     func testShouldThrowAnErrorOnInvalidURL() async throws {
         let headers = ["shouldfail": "failing case"]
         
@@ -104,7 +107,7 @@ final class DCNetworkLayerTests: XCTestCase {
             .setFetchMode(.online)
             .fetch(DCGithubTestResponseModel.self)
         
-        XCTAssertNotNil(result?.error)
+        #expect(result?.error != nil)
     }
 }
 

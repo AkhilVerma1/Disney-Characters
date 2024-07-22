@@ -33,6 +33,7 @@ struct DCDashboardCharacterDetailsView: View {
 #Preview {
     DCDashboardCharacterDetailsView(
         character: DCCharacterDisplayModel(
+            id: 1,
             name: "Shubham Handa",
             imageUrl: "AppIcon",
             isBookmarked: false

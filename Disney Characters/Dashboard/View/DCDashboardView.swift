@@ -19,11 +19,7 @@ struct DCDashboardView: View, Sendable {
                 .onAppear(perform: viewDidLoad)
                 .navigationTitle("Dashboard")
                 .alert(viewModel.getNetworkError(), isPresented: $viewModel.isError) {
-                    Button("Retry") {
-                        Task {
-                            await viewModel.setup()
-                        }
-                    }
+                    alertView
                 }
                 .searchable(text: $searchText)
                 .onChange(of: searchText) { oldValue, newValue in
@@ -36,10 +32,12 @@ struct DCDashboardView: View, Sendable {
 private extension DCDashboardView {
     
     func viewDidLoad() {
-        if viewModel.charactersDisplayModels.isEmpty {
-            Task {
-                await viewModel.setup()
-            }
+        viewModel.viewDidAppear()
+    }
+    
+    var alertView: some View {
+        Button("Retry") {
+            viewModel.viewDidAppear()
         }
     }
     
@@ -62,18 +60,14 @@ private extension DCDashboardView {
             let bookmarkedCharacters = viewModel.getBookmarkedCharacters()
             let characterDisplayModels = viewModel.charactersDisplayModels
             
-            if !bookmarkedCharacters.isEmpty {
-                Section("Bookmarked Characters") {
-                    bookmarkedCharactersView(bookmarkedCharacters)
-                        .listRowSeparator(.hidden)
-                }
+            Section("Bookmarked Characters") {
+                bookmarkedCharactersView(bookmarkedCharacters)
+                    .listRowSeparator(.hidden)
             }
             
-            if !characterDisplayModels.isEmpty {
-                Section("All Characters") {
-                    characterView(characterDisplayModels)
-                        .listRowSeparator(.hidden)
-                }
+            Section("All Characters") {
+                characterView(characterDisplayModels)
+                    .listRowSeparator(.hidden)
             }
         }
         .listStyle(.plain)
@@ -105,10 +99,4 @@ private extension DCDashboardView {
             }
         }
     }
-}
-
-#Preview {
-    DCDashboardView(
-        viewModel: DCDashboardViewModel()
-    )
 }
