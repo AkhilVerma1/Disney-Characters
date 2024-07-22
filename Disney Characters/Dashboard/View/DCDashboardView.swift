@@ -60,9 +60,11 @@ private extension DCDashboardView {
             let bookmarkedCharacters = viewModel.getBookmarkedCharacters()
             let characterDisplayModels = viewModel.charactersDisplayModels
             
-            Section("Bookmarked Characters") {
-                bookmarkedCharactersView(bookmarkedCharacters)
-                    .listRowSeparator(.hidden)
+            if !bookmarkedCharacters.isEmpty {
+                Section("Bookmarked Characters") {
+                    bookmarkedCharactersView(bookmarkedCharacters)
+                        .listRowSeparator(.hidden)
+                }
             }
             
             Section("All Characters") {
