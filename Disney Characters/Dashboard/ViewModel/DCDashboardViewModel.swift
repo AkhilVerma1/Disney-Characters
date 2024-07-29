@@ -18,7 +18,7 @@ class DCDashboardViewModel: ObservableObject {
 
     private var bookmarkedCharacteresDisplayModel: [DCCharacterDisplayModel] = []
     
-    private var modelContext: ModelContext
+    private var modelContext: ModelContext?
     
     let bookmarkSubject = PassthroughSubject<DCCharacterDisplayModel, Never>()
     
@@ -26,7 +26,7 @@ class DCDashboardViewModel: ObservableObject {
     private var characters: DCCharacterModel?
     private var cancellables = Set<AnyCancellable>()
     
-    init(_ modelContext: ModelContext) {
+    init(_ modelContext: ModelContext?) {
         self.modelContext = modelContext
         
         bookmarkSubject
@@ -60,7 +60,7 @@ class DCDashboardViewModel: ObservableObject {
     
     private func getLocalStorageCharacters() -> [DCCharactersLocalStorageDataModel] {
         let descriptor = FetchDescriptor<DCCharactersLocalStorageDataModel>(sortBy: [SortDescriptor(\.time)])
-        return (try? modelContext.fetch(descriptor)) ?? []
+        return (try? modelContext?.fetch(descriptor)) ?? []
     }
     
     @MainActor
@@ -96,7 +96,7 @@ class DCDashboardViewModel: ObservableObject {
     
     func didTapBookmarkCharacter(_ character: DCCharacterDisplayModel) {
         let item = DCCharactersLocalStorageDataModel(id: character.id, time: .now, name: character.name, imageUrl: character.imageUrl)
-        character.isBookmarked ? modelContext.delete(item) : modelContext.insert(item)
+        character.isBookmarked ? modelContext?.delete(item) : modelContext?.insert(item)
         updateBookmarkedCharacters()
         guard let index = charactersDisplayModels.firstIndex(of: character) else { return }
         charactersDisplayModels[index].isBookmarked.toggle()

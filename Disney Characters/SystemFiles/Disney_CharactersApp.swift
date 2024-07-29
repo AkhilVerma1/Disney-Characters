@@ -12,22 +12,15 @@ import SwiftData
 @main
 struct Disney_CharactersApp: App {
     
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            DCCharactersLocalStorageDataModel.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-        
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
+    private var sharedModelContainer: ModelContainer? = {
+        let schema = Schema([DCCharactersLocalStorageDataModel.self])
+        let modelConfiguration = ModelConfiguration(schema: schema)
+        return try? ModelContainer(for: schema, configurations: [modelConfiguration])
     }()
     
     var body: some Scene {
         WindowGroup {
-            DCDashboardView(viewModel: DCDashboardViewModel(sharedModelContainer.mainContext))
+            DCDashboardView(viewModel: DCDashboardViewModel(sharedModelContainer?.mainContext))
         }
     }
 }
